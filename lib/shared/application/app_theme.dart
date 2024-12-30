@@ -37,8 +37,8 @@ class AppTheme {
   static TextTheme get textTheme => TextTheme(
         headlineLarge: GoogleFonts.inter(
           fontWeight: FontWeight.w700,
-          fontSize: 34,
-          color: Color(0x0fffffff),
+          fontSize: 40,
+          color: Color(0xff0A0A0A),
         ),
         headlineSmall: GoogleFonts.inter(
           fontWeight: FontWeight.w500,
