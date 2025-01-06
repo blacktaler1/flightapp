@@ -11,34 +11,92 @@ class OnboardingScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverFillRemaining(
+            fillOverscroll: true,
             child: PageView(
               scrollDirection: Axis.horizontal,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 24,
-                  children: [
-                    Image.asset("assets/images/onboarding-1.png"),
-                    Indicator(currentStep: 0),
-                    Text(
-                      "Explore\fThe Beautiful\fWorld!",
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    spacing: 24,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(21),
+                        child: Image.asset("assets/images/onboarding-1.png"),
+                      ),
+                      Indicator(currentStep: 0),
+                      Text(
+                        "Explore\fThe Beautiful\fWorld!",
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    spacing: 24,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(21),
+                        child: Image.asset("assets/images/onboarding-2.png"),
+                      ),
+                      Indicator(currentStep: 0),
+                      Text(
+                        "Find\fYour Perfect\fTickets To Fly\f",
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    spacing: 24,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(21),
+                        child: Image.asset("assets/images/onboarding-3.png"),
+                      ),
+                      Indicator(currentStep: 0),
+                      Text(
+                        "Book\fAppointment\fin Easiest Way!",
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 45),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
         child: Row(
           children: [
             Expanded(
-              child: OutlinedButton(
+              child: FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: Colors.white,
+                ),
                 onPressed: () {},
-                child: Text("Skip"),
+                child: Text(
+                  "Skip",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
               ),
             ),
             SizedBox(
@@ -48,14 +106,33 @@ class OnboardingScreen extends StatelessWidget {
               child: FilledButton(
                 style: FilledButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.primary,
+                  shape: ContinuousRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SignInScreen(),
+                    ),
+                  );
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Next"),
+                    Text(
+                      "Next",
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Icon(
                       Icons.arrow_circle_right_outlined,
+                      size: 20,
                     ),
                   ],
                 ),

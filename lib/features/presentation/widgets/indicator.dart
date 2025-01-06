@@ -9,8 +9,9 @@ class Indicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: Durations.medium1,
+    return Container(
+      width: double.infinity,
+      alignment: Alignment.center,
       child: Row(
         key: Key("steps-$currentStep"),
         children: [

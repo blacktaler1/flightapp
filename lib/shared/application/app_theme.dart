@@ -60,5 +60,15 @@ class AppTheme {
           fontSize: 16,
           color: Color(0xff0D1634),
         ),
+        displayLarge: GoogleFonts.inter(
+          fontWeight: FontWeight.w500,
+          fontSize: 40,
+          color: Color(0xff0D1634),
+        ),
+        displaySmall: GoogleFonts.inter(
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
+          color: Color(0xff252831b2),
+        ),
       );
 }
