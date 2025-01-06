@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../prestation.dart';
 
@@ -111,12 +112,7 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SignInScreen(),
-                    ),
-                  );
+                  context.go('/sign-in');
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
