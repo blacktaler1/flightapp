@@ -19,6 +19,31 @@ final GoRouter routerConfig = GoRouter(
       name: 'sign-up',
       path: '/sign-up',
       builder: (context, state) => SignUpScreen(),
-    )
+    ),
+    GoRoute(
+      name: 'payment',
+      path: '/payment',
+      builder: (context, state) => PaymentMethodsScreen(),
+    ),
+    GoRoute(
+      name: 'payment-success',
+      path: '/payment-s',
+      builder: (context, state) => PaymentSuccessScreen(),
+    ),
+    GoRoute(
+      name: 'payment-details',
+      path: '/payment-d',
+      builder: (context, state) => PaymentDetailsScreen(),
+    ),
+    GoRoute(
+      name: 'home',
+      path: '/home',
+      builder: (context, state) => HomeScreen(),
+    ),
+    GoRoute(
+      name: 'search',
+      path: '/search',
+      builder: (context, state) => SearchResultScreen(),
+    ),
   ],
 );
