@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -12,7 +15,7 @@ class SignUpScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context);
+            context.go('/sign-in');
           },
         ),
       ),
@@ -23,12 +26,14 @@ class SignUpScreen extends StatelessWidget {
           children: [
             Text(
               'Sign Up',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: TextTheme.of(context).displayLarge,
             ),
             SizedBox(height: 8),
             Text(
               'Start Your Journey with affordable price',
-              style: TextStyle(color: Colors.grey),
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    color: Color(0xff808080),
+                  ),
             ),
             SizedBox(height: 16),
             TextField(
@@ -39,15 +44,31 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            ElevatedButton(
+            FilledButton(
               onPressed: () {},
-              style: ElevatedButton.styleFrom(
+              style: FilledButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: Text('Sign in', style: TextStyle(fontSize: 16)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  Text(
+                    'Sign in',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                  Icon(
+                    CupertinoIcons.check_mark_circled,
+                    color: Colors.white,
+                    size: 20,
+                  )
+                ],
+              ),
             ),
             SizedBox(height: 16),
             Center(
@@ -55,25 +76,56 @@ class SignUpScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.grey))),
             SizedBox(height: 16),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 16,
               children: [
-                IconButton(
-                  icon: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'),
-                  iconSize: 40,
-                  onPressed: () {},
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 20,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color(0xffF2F3F6),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: IconButton(
+                      icon: SvgPicture.asset('assets/icons/facebook.svg'),
+                      iconSize: 24,
+                      onPressed: () {},
+                    ),
+                  ),
                 ),
-                IconButton(
-                  icon: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/0/0b/Google_Logo.svg'),
-                  iconSize: 40,
-                  onPressed: () {},
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xffF2F3F6),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 20,
+                    ),
+                    child: IconButton(
+                      icon: SvgPicture.asset('assets/icons/google.svg'),
+                      iconSize: 24,
+                      onPressed: () {},
+                    ),
+                  ),
                 ),
-                IconButton(
-                  icon: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'),
-                  iconSize: 40,
-                  onPressed: () {},
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xffF2F3F6),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 20,
+                    ),
+                    child: IconButton(
+                      icon: SvgPicture.asset('assets/icons/apple.svg'),
+                      iconSize: 24,
+                      onPressed: () {},
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -81,7 +133,7 @@ class SignUpScreen extends StatelessWidget {
             Center(
               child: TextButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  context.go("/sign-in");
                 },
                 child: Text('Already have an account? Sign In'),
               ),

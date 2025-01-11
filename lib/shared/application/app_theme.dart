@@ -3,9 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData get light => ThemeData(
+        platform: TargetPlatform.iOS,
         colorScheme: colorScheme,
         textTheme: textTheme,
         scaffoldBackgroundColor: Color(0xffFFFFFF),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.white,
+        ),
         appBarTheme: AppBarTheme(
           backgroundColor: Color(0xffFFFFFF),
           centerTitle: true,
@@ -48,7 +52,7 @@ class AppTheme {
         titleLarge: GoogleFonts.inter(
           fontWeight: FontWeight.w500,
           fontSize: 20,
-          color: Color(0x0fffffff),
+          color: Color(0xff171818),
         ),
         titleSmall: GoogleFonts.inter(
           fontWeight: FontWeight.w500,
@@ -68,7 +72,7 @@ class AppTheme {
         displaySmall: GoogleFonts.inter(
           fontWeight: FontWeight.w500,
           fontSize: 14,
-          color: Color(0xff252831b2),
+          color: Color(0x252831b2),
         ),
       );
 }

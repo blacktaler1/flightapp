@@ -1,8 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
-import '../prestation.dart';
 
 class SignInScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -36,7 +35,9 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: 8),
               Text(
                 'Start Your Journey with affordable price',
-                style: Theme.of(context).textTheme.displaySmall,
+                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                      color: Color(0xff808080),
+                    ),
               ),
               SizedBox(height: 16),
               TextFormField(
@@ -50,7 +51,7 @@ class SignInScreen extends StatelessWidget {
                     return 'Please enter your email';
                   }
                   final emailRegex = RegExp(
-                      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\$');
+                      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
                   if (!emailRegex.hasMatch(value)) {
                     return 'Enter a valid email';
                   }
@@ -78,7 +79,9 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: 16),
               FilledButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {}
+                  if (_formKey.currentState!.validate()) {
+                    context.go("/payment");
+                  }
                 },
                 style: FilledButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
@@ -86,11 +89,22 @@ class SignInScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text(
-                  'Sign in',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.white,
-                      ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 8,
+                  children: [
+                    Text(
+                      'Sign in',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
+                    Icon(
+                      CupertinoIcons.check_mark_circled,
+                      color: Colors.white,
+                      size: 20,
+                    )
+                  ],
                 ),
               ),
               SizedBox(height: 16),
@@ -102,22 +116,56 @@ class SignInScreen extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 16,
                 children: [
-                  IconButton(
-                    icon: SvgPicture.asset('assets/icons/facebook.svg'),
-                    iconSize: 24,
-                    onPressed: () {},
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Color(0xffF2F3F6),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: IconButton(
+                        icon: SvgPicture.asset('assets/icons/facebook.svg'),
+                        iconSize: 24,
+                        onPressed: () {},
+                      ),
+                    ),
                   ),
-                  IconButton(
-                    icon: SvgPicture.asset('assets/icons/google.svg'),
-                    iconSize: 24,
-                    onPressed: () {},
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffF2F3F6),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                      ),
+                      child: IconButton(
+                        icon: SvgPicture.asset('assets/icons/google.svg'),
+                        iconSize: 24,
+                        onPressed: () {},
+                      ),
+                    ),
                   ),
-                  IconButton(
-                    icon: SvgPicture.asset('assets/icons/apple.svg'),
-                    iconSize: 24,
-                    onPressed: () {},
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffF2F3F6),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                      ),
+                      child: IconButton(
+                        icon: SvgPicture.asset('assets/icons/apple.svg'),
+                        iconSize: 24,
+                        onPressed: () {},
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -125,12 +173,7 @@ class SignInScreen extends StatelessWidget {
               Center(
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ),
-                    );
+                    context.go('/sign-up');
                   },
                   child: Text('Don’t Have an Account? Sign Up'),
                 ),
